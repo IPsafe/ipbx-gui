@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="widget stacked">
+	<div class="widget-header">
+		<i class="icon-wrench"></i>
+		<h3>{{ title }}</h3>
+	</div>
+	<!-- /widget-header -->
+	<div class="widget-content">
+		<legend>
+			{{ operation }}
+		</legend>
+		<form action="#" method="POST">
+			{{ inline.management_form }}
+			{% csrf_token %}
+
+			{{ form }}
+			<div class="form-actions">
+				<input type="submit" value="Salvar" class="btn">
+			</div>
+		</div>
+		{{ inline.management_form }}
+
+	</form>
+</div>
+<!-- /widget-content -->
+</div>
+<!-- /widget -->
+
+{% endblock %} 

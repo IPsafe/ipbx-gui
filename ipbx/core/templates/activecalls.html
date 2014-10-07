@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="widget stacked">
+	<div class="widget-header">
+		<i class="icon-wrench"></i>
+		<h3>Chamadas Ativas</h3>
+	</div>
+	<!-- /widget-header -->
+	<div class="widget-content widget-table action-table">			
+
+			<table class="table table-bordered" id="dados">
+				<thead>
+					<th>Data/Hora Início</th>
+					<th>Origem</th>
+					<th>Destino</th>
+				</thead>
+				{% for obj in list %}
+				<tr>
+					<td>{{ obj.calldate|date:"d/m/Y H:i:s" }}</td>
+					<td>{{ obj.origin }}</td>
+					<td>{{ obj.destination }}</td>
+				</tr>
+				{%endfor%}
+			</table>
+{% endblock %}

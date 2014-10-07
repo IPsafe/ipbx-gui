@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="widget stacked">
+	<div class="widget-header">
+		<i class="icon-list-alt"></i>
+		<h3>{{ title }}</h3>
+	</div>
+	<div class="widget-content">
+		<form class="form-horizontal" action=/report/results/ method=post>
+			{% csrf_token %}
+			<fieldset>
+				<legend>
+					Pesquisa
+				</legend>
+				<div class="control-group">
+					<label class="control-label">Data/Hora Início</label>
+					<div class="controls">
+						<div id="initdate" class="input-append date">
+							<input id="initdate" name="initdate" data-format="dd/MM/yyyy hh:mm:ss" type="text">
+						</input> <span class="add-on"> <i data-time-icon="icon-time" data-date-icon="icon-calendar"> </i> </span>
+					</div>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Data/Hora Fim</label>
+				<div class="controls">
+					<div id="enddate" class="input-append date">
+						<input id="enddate" name="enddate" data-format="dd/MM/yyyy hh:mm:ss" type="text">
+					</input> <span class="add-on"> <i data-time-icon="icon-time" data-date-icon="icon-calendar"> </i> </span>
+				</div>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="control-group">
+			<label class="control-label">Origem</label>
+			<div class="controls">
+				<input id="origin" name="origin" type="text" placeholder="Número de origem" class="input-xlarge" >
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="control-group">
+			<label class="control-label">Destino</label>
+			<div class="controls">
+				<input id="destination" name="destination" type="text" placeholder="Número de destino" class="input-xlarge" >
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="control-group">
+			<label class="control-label">Desvio</label>
+			<div class="controls">
+				<input id="forward" name="forward" type="text" placeholder="Número de desvio" class="input-xlarge" >
+			</div>
+		</div>
+		<!-- Select Basic -->
+		<div class="control-group">
+			<label class="control-label">Tipo de Chamada</label>
+			<div class="controls">
+				<select id="call_type" name="call_type" class="input-xlarge">
+					<option value="0">Todas</option>
+					<option value="1">Feitas</option>
+					<option value="2">Recebidas</option>
+					<option value="3">Internas</option>
+				</select>
+			</div>
+		</div>
+		<!-- Button -->
+		<div class="control-group">
+			<label class="control-label"></label>
+			<div class="controls">
+				<button id="singlebutton" name="singlebutton" class="btn btn-success">
+					Pesquisar
+				</button>
+			</div>
+		</div>
+	</fieldset>
+</form>
+</div>
+
+<script type="text/javascript">
+$(function() {
+	$('#initdate').datetimepicker({
+		language : 'pt-BR'
+	});
+	$('#enddate').datetimepicker({
+		language : 'pt-BR'
+	});
+});
+
+</script>
+
+{% endblock %} 

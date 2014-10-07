@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="widget stacked">
+	<div class="widget-header">
+		<i class="icon-wrench"></i>
+		<h3>Resultados</h3>
+	</div>
+	<!-- /widget-header -->
+	<div class="widget-content widget-table action-table">			
+
+
+			<!-- Begin page content -->
+			<div class="container">
+				<div class="page-header">
+					<legend>Relatório de Chamadas</legend>
+					<p>
+						Exportar: <a href="/report/results/?csv=exportar"><img src="{{ STATIC_URL }}/img/csv.gif"/></a> 
+					</p>
+				</div>
+				<!--
+				<p class="muted" align="center">
+				Data: {{ datainicio }} / {{ datafim }}
+				</p>
+				-->
+			</div>
+			<table class="table table-bordered" id="dados">
+				<thead>
+					<th>Data</th>
+					<th>Origem</th>
+					<th>Destino</th>
+					<th>Agente</th>
+					<th>Desvio</th>
+					<th>Provedor</th>
+					<th>Duração</th>
+					<th>Valor</th>
+					<th>Status</th>
+					<th>Tipo</th>
+					<th>Observação</th>
+				</thead>
+				{% for obj in cdr %}
+				<tr>
+					<td>{{ obj.calldate|date:"d/m/Y H:i:s" }}</td>
+					<td>{{ obj.origin }}</td>
+					<td>{{ obj.destination }}</td>
+					<td>{{ obj.agent }}</td>
+					<td>{{ obj.forward }}</td>
+					<td>{{ obj.provider }}</td>
+					<td>{{ obj.duration_billing }}</td>
+					<td>{{ obj.value }}</td>
+					<td>{{ obj.status }}</td>
+					<td>{{ obj.call_type }}</td>
+					<td> {{ obj.observation }}
+					<br/>
+					{% for objQueue in obj.cdrQueue %} <b>{{ objQueue.time|date:"H:i:s" }} - {{ objQueue.event}}</b> {% if objQueue.agent %}: {{ objQueue.agent|cut:"SIP/" }}{% endif %}
+					<br/>
+					{%endfor%} </td>
+				</tr>
+				{%endfor%}
+			</table>
+{% endblock %}

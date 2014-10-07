@@ -1,0 +1,3 @@
+datachamada;origem;destino;agente;desvio;provedor;duracao;duracao_bilhetagem;valor;status;tipo_chamada;observacao
+{% for obj in cdr %}{{ obj.calldate|date:"d/m/Y H:i:s" }};{{ obj.origin }};{{ obj.destination }};{{ obj.agent }};{{ obj.forward }};{{ obj.provider }};{{ obj.duration }};{{ obj.duration_billing }};{{ obj.value }};{{ obj.status }};{{ obj.call_type }};{{ obj.observation }};{% for objQueue in obj.cdrQueue %}{{ objQueue.time|date:"H:i:s" }} - {{ objQueue.event}} / {% if objQueue.agent %}: {{ objQueue.agent|cut:"SIP/" }}{% endif %}{%endfor%} 
+{%endfor%}

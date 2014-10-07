@@ -1,0 +1,15 @@
+Django==1.4.5
+South==0.8.1
+antiorm==1.1.1
+argparse==1.2.1
+db==0.0.9
+db-sqlite3==0.0.1
+django-grappelli==2.4.4
+django-system-monitor==0.2
+httplib2==0.8
+psutil==0.7.1
+psycopg2==2.5
+python-gflags==2.0
+wsgiref==0.1.2
+django-debug-toolbar==0.9.4
+gunicorn==17.5

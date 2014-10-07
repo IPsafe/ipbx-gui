@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="widget stacked">
+	<div class="widget-header">
+		<i class="icon-signal"></i>
+		<h3>{{ title }}</h3>
+	</div>
+	<!-- /widget-header -->
+	<div class="widget-content">
+		<legend>
+			{{ operation }}
+		</legend>
+		<form action="#" method="POST">
+			{% csrf_token %}
+
+			{% for obj in form %}
+			<tr>
+				{% if obj.html_name == 'register' %}
+				<section id="accordions">
+					<div class="accordion" id="basic-accordion">
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#basic-accordion" href="#collapseOne"> Configurações de Autenticação </a>
+							</div>
+							<div style="height: 0px;" id="collapseOne" class="accordion-body collapse">
+								<div class="accordion-inner">
+
+								{% endif %} <th>{{ obj.errors }}<label>{{ obj.label }}:</label> {{ obj }}</tr></th>
+			{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-actions">
+						<input type="submit" value="Salvar" class="btn">
+					</div>
+		</form>
+	</div>
+	<!-- /widget-content -->
+</div>
+<!-- /widget
+{% endblock %}

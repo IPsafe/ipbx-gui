@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="widget stacked">
+	<div class="widget-header">
+		<i class="icon-wrench"></i>
+		<h3>{{ title }}</h3>
+	</div>
+	<!-- /widget-header -->
+	<div class="widget-content widget-table action-table">
+		<table id="dados" class="table stripped bordered">
+			<thead>
+				{% for obj in header %}
+				
+				<th> {{ obj }} </th>
+				{%endfor%}
+				<th class="td-actions">Ações</th>
+			</thead>
+			{% for obj in list %}
+			<tr> 
+				{% for field,value in obj.items %}
+				{% if field != 'id' %}<td>{{ value }}</td>{% endif %}
+				{%endfor%}
+				<td class="td-actions">
+					<a href="editar/{{ obj.id }}" class="btn btn-small">
+						<i class="btn-icon-only icon-edit"></i>										
+					</a>
+					<a href="deletar/{{ id }}/{{ obj.id }}" class="btn btn-small btn-danger">
+						<i class="btn-icon-only icon-trash"></i>
+					</a>
+				</td>
+
+			</tr>
+			{%endfor%}
+		</table>
+
+		<br/>
+		<a href="adicionar/{{ id }}">
+			<p align="right"><i class="icon-plus"></i> Adicionar Novo</p>
+		</a>
+	</div>
+	<!-- /widget-content -->
+</div>
+<!-- /widget -->
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="widget stacked">
+	<div class="widget-header">
+		<i class="icon-signal"></i>
+		<h3>{{ title }}</h3>
+	</div>
+	<!-- /widget-header -->
+	<div class="widget-content">
+		<legend>
+			{{ operation }}
+		</legend>
+		<form action="{{ id }}" method="POST">
+			{{ inline.management_form }}
+			{% csrf_token %}
+
+			{{ form.inbound_routes.as_hidden }}
+			{{ form.description.errors }}<label>{{ form.description.label }}</label>{{ form.description }}
+			{{ form.destination.errors }}<label>{{ form.destination.label }}</label>{{ form.destination }}
+			{{ form.weekdays.errors }}<label>{{ form.weekdays.label }}</label>{{ form.weekdays }}
+			{{ form.start.errors }}<label>{{ form.start.label }}</label>{{ form.start }}
+			{{ form.stop.errors }}<label>{{ form.stop.label }}</label>{{ form.stop }}
+			{{ form.dayoff.errors }}<label>{{ form.dayoff.label }}</label>{{ form.dayoff }}
+			<!-- {{ form.specific_date.errors }}<label>{{ form.specific_date.label }}</label>{{ form.specific_date }}-->
+
+
+			<div class="form-actions">
+				<input type="submit" value="Salvar" class="btn">
+			</div>
+		</div>
+
+		{{ inline.management_form }}
+	</form>
+	</div>
+</div>
+{% endblock %} 
